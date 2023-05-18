@@ -5,6 +5,9 @@ import MovieList from './MovieList';
 export default function FavList() {
 
   const [favMovies,setFavMovies]=useState([]);
+  function hanldleRefreshMovies(arr){
+    setFavMovies(arr)
+  }
   const getFav=async ()=>{
     const url= `${process.env.REACT_APP_SERVER_URL}movie`;
     const favResult=await axios.get(url)
@@ -15,6 +18,6 @@ export default function FavList() {
   },[])
   return (
 <>
-<MovieList  movies={favMovies}/>
+<MovieList  movies={favMovies} refMovies={hanldleRefreshMovies}/>
 </>  )
 }

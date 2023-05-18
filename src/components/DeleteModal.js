@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 export default function DeleteModal(props) {
     async function handleDelete(){
         const result= await axios.delete(`${process.env.REACT_APP_SERVER_URL}delete/${props.item.id}`);
+        props.refMovies(result.data);
         props.handleClose();
         }
   return (

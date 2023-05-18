@@ -8,13 +8,13 @@ import FavList from './components/FavList';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
           <Header/>
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/favlist' element={<FavList/>}/>
         </Routes>
-    </HashRouter>
+    </BrowserRouter>
 
   );
 }
