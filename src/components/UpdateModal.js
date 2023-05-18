@@ -6,19 +6,19 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import axios from "axios";
 export default function UpdateModal(props) {
+    const [favArrMovies,setFavArrMovies]=useState([]);
     async function handleSubmit(e){
         e.preventDefault();
-        console.log(e.target)
-
         const obj={
             title: e.target.title.value ,
             image_path: e.target.image_path.value ,
-            time: e.target.time.value ,
+            runtime: e.target.time.value ,
             actors: e.target.actors.value ,
-            description: e.target.description.value ,
-            imdbRating: e.target.imdbRating.value 
+            plot: e.target.description.value ,
+            imdbrating: e.target.imdbRating.value 
             }
-        const result= await axios.put(`${process.env.REACT_APP_SERVER_URL}update/${props.item.id}`,obj);
+        const result= await axios.put(`${process.env.REACT_APP_SERVER_URL}update/${props.id}`,obj);
+        props.refMovies(result.data);
         props.handleClose();
         }
     return (
